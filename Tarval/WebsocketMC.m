@@ -29,6 +29,9 @@
 {
     if(self.websocket.readyState == SR_OPEN) {
         return;
+    } else if(self.websocket.readyState == SR_CLOSED) {
+        self.websocket = [[SRWebSocket alloc] initWithURL:[TRConstants websocketEndpoint] protocols: [TRConstants websocketProtocol]];
+        self.websocket.delegate = self;
     }
     [self.websocket open];
     NSLog(@"Opening connection");
@@ -68,6 +71,11 @@
 
 -(void)restorePin
 {
+    if(!self.pin) {
+        [self sendEvent:@"getPin" data:nil];
+        return;
+    }
+    
     NSMutableDictionary *send = [[NSMutableDictionary alloc] init];
     send[@"pin"] = self.pin;
     [self sendEvent:@"restorePin" data:send];
