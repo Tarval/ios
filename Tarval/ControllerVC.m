@@ -51,7 +51,6 @@
         }
     }];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivePinNotification:) name:@"ws:setPin" object:nil];
-    NSLog(@"wat");
 }
 
 -(void)receivePinNotification:(NSNotification *)notification

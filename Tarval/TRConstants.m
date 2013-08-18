@@ -12,7 +12,8 @@
 
 +(NSURL*) websocketEndpoint
 {
-    return [[NSURL alloc] initWithString:@"ws://archie.stevegattuso.me:8080"];
+    return [[NSURL alloc] initWithString:@"ws://10.0.1.6:8080"];
+    //return [[NSURL alloc] initWithString:@"ws://archie.stevegattuso.me:8080"];
 }
 
 +(NSArray*) websocketProtocol

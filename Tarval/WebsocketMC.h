@@ -12,7 +12,6 @@
 @interface WebsocketMC : NSObject<SRWebSocketDelegate> {
     NSNotificationCenter *_notification_center;
     NSMutableArray *_message_queue;
-    BOOL _conn_open;
 }
 
 @property (strong, nonatomic) SRWebSocket *websocket;

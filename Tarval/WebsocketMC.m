@@ -13,17 +13,30 @@
 
 @synthesize websocket;
 
--(void)connect
-{
+-(id)init {
+    self = [super init];
+    if(!self) {
+        return self;
+    }
+    
     self.websocket = [[SRWebSocket alloc] initWithURL:[TRConstants websocketEndpoint] protocols: [TRConstants websocketProtocol]];
     self.websocket.delegate = self;
+    
+    return self;
+}
+
+-(void)connect
+{
+    if(self.websocket.readyState == SR_OPEN) {
+        return;
+    }
     [self.websocket open];
     NSLog(@"Opening connection");
 }
 
 -(void)disconnect
 {
-    _conn_open = NO;
+    NSLog(@"Disconnecting");
     [self.websocket close];
 }
 
@@ -42,7 +55,7 @@
     NSString *json_string = [[NSString alloc] initWithData:json_data encoding:NSUTF8StringEncoding];
     
     // Store calls made before a connection was completed
-    if(!_conn_open) {
+    if(self.websocket.readyState != SR_OPEN) {
         if(!_message_queue) {
             _message_queue = [[NSMutableArray alloc] init];
         }
@@ -63,7 +76,6 @@
 #pragma mark Websocket stuff
 -(void)webSocketDidOpen:(SRWebSocket *)webSocket
 {
-    _conn_open = YES;
     // Run through all the previous calls
     for(int i = 0; i < [_message_queue count]; i++) {
         [self.websocket send: [_message_queue objectAtIndex:i]];
@@ -79,7 +91,6 @@
     NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:[message dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&error];
     
     NSString *event_name = [[NSString alloc] initWithFormat:@"ws:%@", resp[@"e"]];
-    NSLog(@"Incoming: %@", event_name);
     
     // The pin is important, store it
     if([event_name isEqualToString:@"ws:setPin"]) {

@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>288F25B0-D052-4218-A845-D4DDBCA92114</string>
+	<string>1F9BEF14-3DCE-4655-BC09-FA6D2947A2CF</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Tarval</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>71558037-F920-4A67-A9B8-EBE7414C2C13</key>
-		<string>ssh://github.com/cgil/tarval.git</string>
+		<key>3B88AF80-DB0B-4F5A-A658-D66E0931CA30</key>
+		<string>ssh://github.com/Tarval/ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ios/Tarval.xcworkspace</string>
+	<string>Tarval.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>71558037-F920-4A67-A9B8-EBE7414C2C13</key>
-		<string>../..</string>
+		<key>3B88AF80-DB0B-4F5A-A658-D66E0931CA30</key>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/cgil/tarval.git</string>
+	<string>ssh://github.com/Tarval/ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>71558037-F920-4A67-A9B8-EBE7414C2C13</string>
+	<string>3B88AF80-DB0B-4F5A-A658-D66E0931CA30</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>71558037-F920-4A67-A9B8-EBE7414C2C13</string>
+			<string>3B88AF80-DB0B-4F5A-A658-D66E0931CA30</string>
 			<key>IDESourceControlWCCName</key>
-			<string>tarval</string>
+			<string>ios</string>
 		</dict>
 	</array>
 </dict>
