@@ -55,7 +55,11 @@
 
 -(void)receivePinNotification:(NSNotification *)notification
 {
-    self.label_pin.text = [notification object][@"pin"];
+    NSString *pin = notification.object[@"pin"];
+    for(NSInteger i = [pin length]; i < 4; i++) {
+        pin = [[NSString alloc] initWithFormat:@"%@%@", @"0", pin];
+    }
+    self.label_pin.text = pin;
 }
 
 -(void) viewDidAppear:(BOOL)animated
