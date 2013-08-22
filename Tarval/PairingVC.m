@@ -51,7 +51,19 @@
         }
     }
     
-    self.label_code.text = pin;
+    // Add spaces to make it look good
+    NSMutableString *spacedPin = [[NSMutableString alloc] init];
+    for(int i = 0; i < [pin length]; i++) {
+        char current = [pin characterAtIndex:i];
+        
+        if(current == [pin length] - 1) {
+            [spacedPin appendFormat:@"%c", current];
+        } else {
+            [spacedPin appendFormat:@"%c ", current];
+        }
+    }
+    
+    self.label_code.text = spacedPin;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.hud_loading hide: YES];
     });
