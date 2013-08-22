@@ -10,7 +10,7 @@
 
 @implementation TRControllerButton
 
-@synthesize key_id;
+@synthesize direction;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -18,6 +18,15 @@
     if (self) {
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    NSString *inactive_name = [NSString stringWithFormat:@"%@_arrow_inactive.png", self.direction];
+    NSString *active_name = [NSString stringWithFormat:@"%@_arrow_active.png", self.direction];
+    
+    [self setImage:[UIImage imageNamed:inactive_name] forState:UIControlStateNormal];
+    [self setImage:[UIImage imageNamed:active_name] forState:UIControlStateHighlighted];
 }
 
 @end

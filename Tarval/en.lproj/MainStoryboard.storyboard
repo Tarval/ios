@@ -53,68 +53,80 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="38" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="obq-s9-JHN">
+                            <button opaque="NO" tag="38" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="obq-s9-JHN" customClass="TRControllerButton">
                                 <rect key="frame" x="81" y="42" width="75" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="     ">
+                                <state key="normal" title="     " image="up_arrow_inactive.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="direction" value="up"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="pressControllerButton:" destination="2" eventType="touchDown" id="ujf-af-cZt"/>
                                     <action selector="releaseControllerButton:" destination="2" eventType="touchUpInside" id="rzY-Pq-eda"/>
                                     <action selector="releaseControllerButton:" destination="2" eventType="touchUpOutside" id="vbU-qS-5w5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9BA-kf-tVY">
+                            <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9BA-kf-tVY" customClass="TRControllerButton">
                                 <rect key="frame" x="81" y="206" width="75" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="     ">
+                                <state key="normal" title="     " image="down_arrow_inactive.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="direction" value="down"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="pressControllerButton:" destination="2" eventType="touchDown" id="akc-dM-zgq"/>
                                     <action selector="releaseControllerButton:" destination="2" eventType="touchUpOutside" id="Gjy-JD-ows"/>
                                     <action selector="releaseControllerButton:" destination="2" eventType="touchUpInside" id="jPu-1m-SVR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="39" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hHd-MA-S7c">
+                            <button opaque="NO" tag="39" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hHd-MA-S7c" customClass="TRControllerButton">
                                 <rect key="frame" x="142" y="124" width="75" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="     ">
+                                <state key="normal" title="     " image="right_arrow_inactive.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="direction" value="right"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="pressControllerButton:" destination="2" eventType="touchDown" id="N3o-3n-RmW"/>
                                     <action selector="releaseControllerButton:" destination="2" eventType="touchUpOutside" id="HZM-Lu-AgI"/>
                                     <action selector="releaseControllerButton:" destination="2" eventType="touchUpInside" id="QTa-FX-cM9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="37" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DgJ-MY-Vr9">
+                            <button opaque="NO" tag="37" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DgJ-MY-Vr9" customClass="TRControllerButton">
                                 <rect key="frame" x="20" y="124" width="75" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="     ">
+                                <state key="normal" title="     " image="left_arrow_inactive.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="direction" value="left"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="pressControllerButton:" destination="2" eventType="touchDown" id="sw7-9L-LHy"/>
                                     <action selector="releaseControllerButton:" destination="2" eventType="touchUpOutside" id="tph-QA-IPf"/>
@@ -228,6 +240,12 @@
             <point key="canvasLocation" x="26" y="206"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="down_arrow_inactive.png" width="1024" height="1024"/>
+        <image name="left_arrow_inactive.png" width="1024" height="1024"/>
+        <image name="right_arrow_inactive.png" width="1024" height="1024"/>
+        <image name="up_arrow_inactive.png" width="1024" height="1024"/>
+    </resources>
     <classes>
         <class className="ControllerVC" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ControllerVC.h"/>
@@ -243,6 +261,9 @@
                 <relationship kind="action" name="pressDone:"/>
                 <relationship kind="outlet" name="label_code" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="TRControllerButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TRControllerButton.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

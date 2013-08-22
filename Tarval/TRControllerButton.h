@@ -10,6 +10,6 @@
 
 @interface TRControllerButton : UIButton
 
-@property (strong, nonatomic) NSNumber *key_id;
+@property (assign) NSString *direction;
 
 @end
