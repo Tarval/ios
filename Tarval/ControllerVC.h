@@ -1,27 +1,26 @@
 //
-//  ViewController.h
+//  ControllerVC.h
 //  Tarval
 //
-//  Created by Steve Gattuso on 8/3/13.
+//  Created by Steve Gattuso on 8/27/13.
 //  Copyright (c) 2013 hackNY. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <CoreMotion/CoreMotion.h>
-#import "PairingVC.h"
+
 @class WebsocketMC;
 
-@interface ControllerVC : UIViewController<PairingVCDelegate> {
-    WebsocketMC *_websocket_mc;
-    BOOL _got_pin;
-    NSInteger prev_accel_val;
+@interface ControllerVC : UIViewController {
+  NSInteger previousAccelerometerValue;
+  CMMotionManager *motionManager;
+  BOOL havePin;
 }
 
-@property (strong, nonatomic) CMMotionManager *motion_manager;
-@property (strong, nonatomic) IBOutlet UILabel *label_pin;
+@property (strong, nonatomic) WebsocketMC *websocketMC;
 
--(IBAction)pressControllerButton: (UIButton*)sender;
--(IBAction)releaseControllerButton: (UIButton*)sender;
--(void)receivePinNotification: (NSNotification*)notification;
+- (IBAction)pressControllerButton: (id)sender;
+- (IBAction)releaseControllerButton: (id)sender;
+- (void)receiveSetPinNotification: (NSNotification*)notification;
 
 @end

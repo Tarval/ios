@@ -1,30 +1,26 @@
 //
-//  PairingVCViewController.h
+//  PairingVC.h
 //  Tarval
 //
-//  Created by Steve Gattuso on 8/3/13.
+//  Created by Steve Gattuso on 8/27/13.
 //  Copyright (c) 2013 hackNY. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <MBProgressHUD.h>
-#import "WebsocketMC.h"
 
-@protocol PairingVCDelegate<NSObject>
+@class WebsocketMC;
 
--(void)receivePin: (NSNumber*)pin;
+@interface PairingVC : UIViewController {
+    MBProgressHUD *loadingHud;
+    IBOutlet UILabel *codeLabel;
+}
 
-@end
+@property (strong, nonatomic) WebsocketMC *websocketMC;
 
-@interface PairingVC : UIViewController
+- (void)setupListeners;
+- (void)receivePinNotification: (NSNotification *)notification;
 
-@property (strong, nonatomic) IBOutlet UILabel *label_code;
-@property (strong, nonatomic) MBProgressHUD *hud_loading;
-@property (strong, nonatomic) id<PairingVCDelegate> delegate;
-@property (strong, nonatomic) WebsocketMC *websocket_mc;
-
--(IBAction)pressDone: (id)sender;
--(void)setupListeners;
--(void)receivePinNotification: (NSNotification *)notification;
+- (IBAction)pressDone: (id)sender;
 
 @end

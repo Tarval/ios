@@ -1,123 +1,92 @@
 //
-//  ViewController.m
+//  ControllerVC.m
 //  Tarval
 //
-//  Created by Steve Gattuso on 8/3/13.
+//  Created by Steve Gattuso on 8/27/13.
 //  Copyright (c) 2013 hackNY. All rights reserved.
 //
 
 #import "ControllerVC.h"
 #import "PairingVC.h"
-#import "WebsocketMC.h"
-#import "AppDelegate.h"
 #import "TRControllerButton.h"
-
-@interface ControllerVC ()
-
-@end
+#import "AppDelegate.h"
+#import "WebsocketMC.h"
 
 @implementation ControllerVC
 
-@synthesize motion_manager;
-@synthesize label_pin;
+@synthesize websocketMC;
 
--(void)viewDidLoad
+- (void)viewDidLoad
 {
-    [super viewDidLoad];
-    AppDelegate *app_delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    _websocket_mc = app_delegate.websocketModelController;
+  [super viewDidLoad];
+  AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+  self.websocketMC = appDelegate.websocketModelController;
+  
+  // Set up accelerometer listening
+  motionManager = [[CMMotionManager alloc] init];
+  motionManager.accelerometerUpdateInterval = .050;
+  [motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
+      withHandler:^(CMAccelerometerData *data, NSError *error) {
     
-    self.motion_manager = [[CMMotionManager alloc] init];
-    self.motion_manager.accelerometerUpdateInterval = .050;
-    [self.motion_manager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMAccelerometerData *data, NSError *error) {
-        if(fabs(data.acceleration.y) < .4) {
-            if(prev_accel_val != 0) {
-                [_websocket_mc sendEvent:@"stopTilt" data:nil];
-            }
-            prev_accel_val = 0;
-            return;
-        }
-        
-        if(prev_accel_val == 0) {
-            NSMutableDictionary *send = [[NSMutableDictionary alloc] init];
-            send[@"v"] = [NSNumber numberWithFloat: data.acceleration.y];
-            [_websocket_mc sendEvent:@"tilt" data:send];
-            
-            if(data.acceleration.y > 0) {
-                prev_accel_val = 1;
-            } else {
-                prev_accel_val = -1;
-            }
-        }
-    }];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivePinNotification:) name:@"ws:setPin" object:nil];
-}
-
--(void)receivePinNotification:(NSNotification *)notification
-{
-    NSString *pin = notification.object[@"pin"];
-    for(NSInteger i = [pin length]; i < 4; i++) {
-        pin = [[NSString alloc] initWithFormat:@"%@%@", @"0", pin];
+    if(fabs(data.acceleration.y) < .4) {
+      if(previousAccelerometerValue != 0) {
+        [self.websocketMC sendEvent:@"stopTilt" data:nil];
+      }
+      
+      previousAccelerometerValue = 0;
+      return;
     }
-    self.label_pin.text = pin;
-}
-
--(void) viewDidAppear:(BOOL)animated
-{
-    if(!_got_pin) {
-        PairingVC *pairing_modal = (PairingVC *)[self.storyboard instantiateViewControllerWithIdentifier:@"PairingVC"];
-        pairing_modal.websocket_mc = _websocket_mc;
-        pairing_modal.delegate = self;
-        [self presentViewController:pairing_modal animated:YES completion:nil];
+    
+    if(previousAccelerometerValue == 0) {
+      [self.websocketMC sendEvent:@"tilt" data:@{
+        @"v": [NSNumber numberWithFloat:data.acceleration.y]
+      }];
+      
+      if(data.acceleration.y > 0) {
+        previousAccelerometerValue = 1;
+      } else {
+        previousAccelerometerValue = -1;
+      }
     }
+  }];
+  
+  // Listen for setPin event
+  NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+  [defaultCenter addObserver:self selector:@selector(receiveSetPinNotification:)
+      name:@"ws:setPin" object:nil];
 }
 
-#pragma mark PairingVCDelegate
-
--(void)receivePin:(NSNumber *)pin
+- (void)viewDidAppear:(BOOL)animated
 {
-    _got_pin = true;
+  // If no pin has been set, show PairingVC
+  if(!havePin) {
+    PairingVC *viewController = (PairingVC*)[self.storyboard
+        instantiateViewControllerWithIdentifier:@"PairingVC"];
+    
+    viewController.websocketMC = self.websocketMC;
+    [self presentViewController:viewController animated:YES completion:nil];
+  }
 }
 
-#pragma mark CoreMotion stuff
-
-#pragma mark UIButton events
-
--(IBAction)pressControllerButton: (UIButton*)sender
+#pragma mark NSNotificationCenter listeners
+- (void)receiveSetPinNotification:(NSNotification *)notification
 {
-    NSMutableDictionary *send = [[NSMutableDictionary alloc] init];
-    send[@"v"] = [NSNumber numberWithInt: sender.tag];
-    [_websocket_mc sendEvent:@"keyDown" data:send];
+  havePin = YES;
 }
 
--(IBAction)releaseControllerButton: (UIButton*)sender
+#pragma mark IBActions
+- (IBAction)pressControllerButton:(UIButton*)sender
 {
-    NSMutableDictionary *send = [[NSMutableDictionary alloc] init];
-    send[@"v"] = [NSNumber numberWithInt: sender.tag];
-    [_websocket_mc sendEvent:@"keyUp" data:send];
+  [self.websocketMC sendEvent:@"keyDown" data:@{
+    @"v": [NSNumber numberWithInt: sender.tag]
+  }];
 }
 
-#pragma mark ios_stuff
-
--(void)didReceiveMemoryWarning
+- (IBAction)releaseControllerButton:(UIButton*)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(UIInterfaceOrientation) preferredInterfaceOrientationForPresentation
-{
-    return UIInterfaceOrientationLandscapeLeft;
-}
-
--(NSUInteger) supportedInterfaceOrientations
-{
-   return UIInterfaceOrientationMaskLandscapeLeft;
-}
-
--(BOOL) shouldAutorotate
-{
-    return YES;
+  [self.websocketMC sendEvent:@"keyUp" data:@{
+    @"v": [NSNumber numberWithInt: sender.tag]
+  }];
 }
 
 @end

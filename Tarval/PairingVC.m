@@ -1,99 +1,79 @@
 //
-//  PairingVCViewController.m
+//  PairingVC.m
 //  Tarval
 //
-//  Created by Steve Gattuso on 8/3/13.
+//  Created by Steve Gattuso on 8/27/13.
 //  Copyright (c) 2013 hackNY. All rights reserved.
 //
 
 #import "PairingVC.h"
-
-@interface PairingVC ()
-
-@end
+#import "WebsocketMC.h"
 
 @implementation PairingVC
 
-@synthesize label_code;
-@synthesize hud_loading;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-    }
-    return self;
-}
+@synthesize websocketMC;
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    [self setupListeners];
-    self.hud_loading = [MBProgressHUD showHUDAddedTo: self.view animated: YES];
-    self.label_code.text = @"";
-    
-    [self.websocket_mc sendEvent: @"getPin" data: nil];
+  [super viewDidLoad];
+  [self setupListeners];
+  
+  loadingHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+  [self.websocketMC sendEvent:@"getPin" data:nil];
+  
+  codeLabel.text = @"";
 }
 
--(void)setupListeners
+- (void)setupListeners
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivePinNotification:) name:@"ws:setPin" object:nil];
+  NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+  
+  [defaultCenter addObserver:self selector:@selector(receivePinNotification:)
+    name:@"ws:setPin" object:nil];
 }
 
--(void)receivePinNotification:(NSNotification *)notification
+- (void)receivePinNotification:(NSNotification *)notification
 {
-    [self.delegate receivePin: [notification object][@"pin"]];
-    
-    NSString *pin = [notification object][@"pin"];
-    if([pin length] < 4) {
-        for(int i = [pin length]; i < 4; i++) {
-            pin = [NSString stringWithFormat:@"0%@", pin];
-        }
+  NSString *pin = notification.object[@"pin"];
+  if([pin length] < 4) {
+    for(int i = [pin length]; i < 4; i++) {
+      pin = [NSString stringWithFormat:@"0%@", pin];
     }
+  }
+  
+  // Add spaces to make it look good
+  NSMutableString *spacedPin = [[NSMutableString alloc] init];
+  for(int i = 0; i < [pin length]; i++) {
+    char current = [pin characterAtIndex:i];
     
-    // Add spaces to make it look good
-    NSMutableString *spacedPin = [[NSMutableString alloc] init];
-    for(int i = 0; i < [pin length]; i++) {
-        char current = [pin characterAtIndex:i];
-        
-        if(current == [pin length] - 1) {
-            [spacedPin appendFormat:@"%c", current];
-        } else {
-            [spacedPin appendFormat:@"%c ", current];
-        }
+    if(current == [pin length] - 1) {
+      [spacedPin appendFormat:@"%c", current];
+    } else {
+      [spacedPin appendFormat:@"%c ", current];
     }
-    
-    self.label_code.text = spacedPin;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.hud_loading hide: YES];
-    });
+  }
+  
+  codeLabel.text = spacedPin;
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [loadingHud hide:YES];
+  });
 }
 
 #pragma mark IBActions
--(IBAction)pressDone:(id)sender
+- (IBAction)pressDone:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark ios_stuff
-- (void)didReceiveMemoryWarning
+#pragma mark iOS handlers
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
-    [super didReceiveMemoryWarning];
+  return UIInterfaceOrientationLandscapeLeft;
 }
 
--(UIInterfaceOrientation) preferredInterfaceOrientationForPresentation
+- (NSUInteger)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationLandscapeLeft;
-}
-
--(NSUInteger) supportedInterfaceOrientations
-{
-   return UIInterfaceOrientationMaskLandscapeLeft;
-}
-
--(BOOL) shouldAutorotate
-{
-    return YES;
+  return UIInterfaceOrientationMaskLandscapeLeft;
 }
 
 @end
