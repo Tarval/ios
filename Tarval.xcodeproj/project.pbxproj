@@ -145,13 +145,6 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		AA69739F17C64EEA0074554A /* Subclasses */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Subclasses;
-			sourceTree = "<group>";
-		};
 		AAA964E617AD781500E174E9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,18 +189,13 @@
 		AAD5FC9E17AD71D9007D9E1D /* Tarval */ = {
 			isa = PBXGroup;
 			children = (
-				AA69739F17C64EEA0074554A /* Subclasses */,
+				AAE1AA9B17CD69A900F81177 /* Utilities */,
 				AA69738E17C64DAD0074554A /* Images */,
 				AAEF652417ADB86300918DD1 /* Element Subclasses */,
 				AAA964E617AD781500E174E9 /* View Controllers */,
 				AAD5FC9F17AD71D9007D9E1D /* Supporting Files */,
 				AAD5FCA717AD71D9007D9E1D /* AppDelegate.h */,
 				AAD5FCA817AD71D9007D9E1D /* AppDelegate.m */,
-				AAD5FCB017AD71D9007D9E1D /* MainStoryboard.storyboard */,
-				AAA964EA17AD870900E174E9 /* TRConstants.h */,
-				AAA964EB17AD870900E174E9 /* TRConstants.m */,
-				AAE1AA9817CD4ECA00F81177 /* TRWebsocketMC.h */,
-				AAE1AA9917CD4ECA00F81177 /* TRWebsocketMC.m */,
 			);
 			path = Tarval;
 			sourceTree = "<group>";
@@ -215,12 +203,24 @@
 		AAD5FC9F17AD71D9007D9E1D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AAD5FCB017AD71D9007D9E1D /* MainStoryboard.storyboard */,
 				AAD5FCA017AD71D9007D9E1D /* Tarval-Info.plist */,
 				AAD5FCA117AD71D9007D9E1D /* InfoPlist.strings */,
 				AAD5FCA417AD71D9007D9E1D /* main.m */,
 				AAD5FCA617AD71D9007D9E1D /* Tarval-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AAE1AA9B17CD69A900F81177 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AAA964EA17AD870900E174E9 /* TRConstants.h */,
+				AAA964EB17AD870900E174E9 /* TRConstants.m */,
+				AAE1AA9817CD4ECA00F81177 /* TRWebsocketMC.h */,
+				AAE1AA9917CD4ECA00F81177 /* TRWebsocketMC.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		AAEF652417ADB86300918DD1 /* Element Subclasses */ = {
