@@ -20,6 +20,7 @@
 
 - (void)setupListeners;
 - (void)receivePinNotification: (NSNotification *)notification;
+- (NSString*)formatPin: (NSString*)pin;
 
 - (IBAction)pressDone: (id)sender;
 

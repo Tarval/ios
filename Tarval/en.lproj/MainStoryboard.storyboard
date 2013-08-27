@@ -107,7 +107,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="68" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zFw-Lx-DVm">
-                                <rect key="frame" x="480" y="124" width="85.999999999999986" height="75"/>
+                                <rect key="frame" x="479" y="124" width="86.999999999999915" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="b_button.png">
@@ -133,7 +133,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="87" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5yB-2a-e1O">
-                                <rect key="frame" x="411" y="42" width="86" height="75"/>
+                                <rect key="frame" x="409" y="42" width="88" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="y_button.png">
@@ -162,6 +162,9 @@
                                 <rect key="frame" x="9" y="289" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <connections>
+                                    <action selector="pressInfoButton:" destination="2" eventType="touchUpInside" id="SBZ-Hn-7jU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

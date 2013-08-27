@@ -18,10 +18,13 @@
   [super viewDidLoad];
   [self setupListeners];
   
-  loadingHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-  [self.websocketMC sendEvent:@"getPin" data:nil];
-  
-  codeLabel.text = @"";
+  if(self.websocketMC.pin == nil) {
+    loadingHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.websocketMC sendEvent:@"getPin" data:nil];
+    codeLabel.text = @"";
+  } else {
+    codeLabel.text = [self formatPin:[[NSString alloc] initWithFormat:@"%@", self.websocketMC.pin]];
+  }
 }
 
 - (void)setupListeners
@@ -32,9 +35,8 @@
     name:@"ws:setPin" object:nil];
 }
 
-- (void)receivePinNotification:(NSNotification *)notification
+- (NSString*)formatPin:(NSString *)pin
 {
-  NSString *pin = notification.object[@"pin"];
   if([pin length] < 4) {
     for(int i = [pin length]; i < 4; i++) {
       pin = [NSString stringWithFormat:@"0%@", pin];
@@ -53,7 +55,13 @@
     }
   }
   
-  codeLabel.text = spacedPin;
+  return spacedPin;
+}
+
+- (void)receivePinNotification:(NSNotification *)notification
+{
+  codeLabel.text = [self formatPin:notification.object[@"pin"]];
+  
   dispatch_async(dispatch_get_main_queue(), ^{
     [loadingHud hide:YES];
   });

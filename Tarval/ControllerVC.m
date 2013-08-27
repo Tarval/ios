@@ -89,4 +89,13 @@
   }];
 }
 
+- (IBAction)pressInfoButton:(id)sender
+{
+  PairingVC *viewController = (PairingVC*)[self.storyboard
+      instantiateViewControllerWithIdentifier:@"PairingVC"];
+  
+  viewController.websocketMC = self.websocketMC;
+  [self presentViewController:viewController animated:YES completion:nil];
+}
+
 @end

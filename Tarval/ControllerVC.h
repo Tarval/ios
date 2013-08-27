@@ -21,6 +21,7 @@
 
 - (IBAction)pressControllerButton: (id)sender;
 - (IBAction)releaseControllerButton: (id)sender;
+- (IBAction)pressInfoButton: (id)sender;
 - (void)receiveSetPinNotification: (NSNotification*)notification;
 
 @end
