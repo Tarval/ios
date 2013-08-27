@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class WebsocketMC;
+@class TRWebsocketMC;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) WebsocketMC *websocketModelController;
+@property (strong, nonatomic) TRWebsocketMC *websocketModelController;
 
 @end

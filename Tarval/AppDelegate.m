@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "WebsocketMC.h"
+#import "TRWebsocketMC.h"
 
 @implementation AppDelegate
 
@@ -15,7 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.websocketModelController = [[WebsocketMC alloc] init];
+    self.websocketModelController = [[TRWebsocketMC alloc] init];
     [self.websocketModelController connect];
     
     return YES;

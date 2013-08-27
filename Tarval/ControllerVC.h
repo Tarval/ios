@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreMotion/CoreMotion.h>
 
-@class WebsocketMC;
+@class TRWebsocketMC;
 
 @interface ControllerVC : UIViewController {
   NSInteger previousAccelerometerValue;
@@ -17,7 +17,7 @@
   BOOL havePin;
 }
 
-@property (strong, nonatomic) WebsocketMC *websocketMC;
+@property (strong, nonatomic) TRWebsocketMC *websocketMC;
 
 - (IBAction)pressControllerButton: (id)sender;
 - (IBAction)releaseControllerButton: (id)sender;

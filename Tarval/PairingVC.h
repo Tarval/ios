@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <MBProgressHUD.h>
 
-@class WebsocketMC;
+@class TRWebsocketMC;
 
 @interface PairingVC : UIViewController {
     MBProgressHUD *loadingHud;
     IBOutlet UILabel *codeLabel;
 }
 
-@property (strong, nonatomic) WebsocketMC *websocketMC;
+@property (strong, nonatomic) TRWebsocketMC *websocketMC;
 
 - (void)setupListeners;
 - (void)receivePinNotification: (NSNotification *)notification;

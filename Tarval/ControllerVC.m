@@ -10,7 +10,7 @@
 #import "PairingVC.h"
 #import "TRControllerButton.h"
 #import "AppDelegate.h"
-#import "WebsocketMC.h"
+#import "TRWebsocketMC.h"
 
 @implementation ControllerVC
 

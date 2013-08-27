@@ -7,7 +7,7 @@
 //
 
 #import "PairingVC.h"
-#import "WebsocketMC.h"
+#import "TRWebsocketMC.h"
 
 @implementation PairingVC
 

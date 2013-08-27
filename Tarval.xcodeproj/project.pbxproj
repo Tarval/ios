@@ -21,7 +21,6 @@
 		AA69739D17C64E570074554A /* left_arrow_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA69739B17C64E570074554A /* left_arrow_active.png */; };
 		AA69739E17C64E570074554A /* left_arrow_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = AA69739C17C64E570074554A /* left_arrow_inactive.png */; };
 		AA939F8417C660740026B50D /* app_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA939F8317C660740026B50D /* app_icon@2x.png */; };
-		AAA964E917AD857A00E174E9 /* WebsocketMC.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA964E817AD857A00E174E9 /* WebsocketMC.m */; };
 		AAA964EC17AD870900E174E9 /* TRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA964EB17AD870900E174E9 /* TRConstants.m */; };
 		AAAB52CF17C6626100EE5855 /* app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AAAB52CE17C6626100EE5855 /* app_icon.png */; };
 		AAB2DDFF17CD446200133948 /* ControllerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2DDFE17CD446200133948 /* ControllerVC.m */; };
@@ -44,6 +43,7 @@
 		AAD5FCA517AD71D9007D9E1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD5FCA417AD71D9007D9E1D /* main.m */; };
 		AAD5FCA917AD71D9007D9E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD5FCA817AD71D9007D9E1D /* AppDelegate.m */; };
 		AAD5FCB217AD71D9007D9E1D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD5FCB017AD71D9007D9E1D /* MainStoryboard.storyboard */; };
+		AAE1AA9A17CD4ECA00F81177 /* TRWebsocketMC.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE1AA9917CD4ECA00F81177 /* TRWebsocketMC.m */; };
 		AAEF652717ADB88600918DD1 /* TRControllerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF652617ADB88600918DD1 /* TRControllerButton.m */; };
 /* End PBXBuildFile section */
 
@@ -64,8 +64,6 @@
 		AA69739B17C64E570074554A /* left_arrow_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow_active.png; sourceTree = "<group>"; };
 		AA69739C17C64E570074554A /* left_arrow_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow_inactive.png; sourceTree = "<group>"; };
 		AA939F8317C660740026B50D /* app_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_icon@2x.png"; sourceTree = "<group>"; };
-		AAA964E717AD857A00E174E9 /* WebsocketMC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsocketMC.h; sourceTree = "<group>"; };
-		AAA964E817AD857A00E174E9 /* WebsocketMC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsocketMC.m; sourceTree = "<group>"; };
 		AAA964EA17AD870900E174E9 /* TRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRConstants.h; sourceTree = "<group>"; };
 		AAA964EB17AD870900E174E9 /* TRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRConstants.m; sourceTree = "<group>"; };
 		AAAB52CE17C6626100EE5855 /* app_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon.png; sourceTree = "<group>"; };
@@ -94,6 +92,8 @@
 		AAD5FCA717AD71D9007D9E1D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AAD5FCA817AD71D9007D9E1D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AAD5FCB117AD71D9007D9E1D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		AAE1AA9817CD4ECA00F81177 /* TRWebsocketMC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRWebsocketMC.h; sourceTree = "<group>"; };
+		AAE1AA9917CD4ECA00F81177 /* TRWebsocketMC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRWebsocketMC.m; sourceTree = "<group>"; };
 		AAEF652517ADB88600918DD1 /* TRControllerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRControllerButton.h; sourceTree = "<group>"; };
 		AAEF652617ADB88600918DD1 /* TRControllerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRControllerButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,10 +204,10 @@
 				AAD5FCA717AD71D9007D9E1D /* AppDelegate.h */,
 				AAD5FCA817AD71D9007D9E1D /* AppDelegate.m */,
 				AAD5FCB017AD71D9007D9E1D /* MainStoryboard.storyboard */,
-				AAA964E717AD857A00E174E9 /* WebsocketMC.h */,
-				AAA964E817AD857A00E174E9 /* WebsocketMC.m */,
 				AAA964EA17AD870900E174E9 /* TRConstants.h */,
 				AAA964EB17AD870900E174E9 /* TRConstants.m */,
+				AAE1AA9817CD4ECA00F81177 /* TRWebsocketMC.h */,
+				AAE1AA9917CD4ECA00F81177 /* TRWebsocketMC.m */,
 			);
 			path = Tarval;
 			sourceTree = "<group>";
@@ -355,10 +355,10 @@
 				AAD5FCA517AD71D9007D9E1D /* main.m in Sources */,
 				AA0D17EE17CD339B004677AA /* PairingVC.m in Sources */,
 				AAD5FCA917AD71D9007D9E1D /* AppDelegate.m in Sources */,
-				AAA964E917AD857A00E174E9 /* WebsocketMC.m in Sources */,
 				AAA964EC17AD870900E174E9 /* TRConstants.m in Sources */,
 				AAB2DDFF17CD446200133948 /* ControllerVC.m in Sources */,
 				AAEF652717ADB88600918DD1 /* TRControllerButton.m in Sources */,
+				AAE1AA9A17CD4ECA00F81177 /* TRWebsocketMC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
